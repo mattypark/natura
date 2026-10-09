@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 
+import { prefersReducedMotion } from "@/lib/motion";
 import { HIDDEN_POSE, markRingTrackDirty, ringFit, sampleRingTrack, sensorScreen, type RingPose } from "@/lib/ringTrack";
 
 import { buildRing } from "./buildRing";
@@ -49,6 +50,8 @@ export function mountRingScene(canvas: HTMLCanvasElement): () => void {
   rim.position.set(6, -3, -4);
   scene.add(key, rim, new THREE.AmbientLight("#ffffff", 0.25));
 
+  // Reduced motion keeps the ring from rushing the camera.
+  const maxSize = prefersReducedMotion() ? 0.9 : Infinity;
   const visibleHeight = 2 * CAMERA_Z * Math.tan(THREE.MathUtils.degToRad(FOV / 2));
   let width = 1;
   let height = 1;
@@ -104,7 +107,7 @@ export function mountRingScene(canvas: HTMLCanvasElement): () => void {
       spinAngle += (rest - spinAngle) * 0.08;
     }
     const visibleWidth = visibleHeight * camera.aspect;
-    const scale = (current.size * fit * visibleHeight) / 2;
+    const scale = (Math.min(current.size, maxSize) * fit * visibleHeight) / 2;
     rig.group.position.set(current.x * visibleWidth, -current.y * visibleHeight, 0);
     rig.group.scale.setScalar(Math.max(0.0001, scale));
     rig.group.rotation.set(current.rx, current.ry + spinAngle, current.rz);

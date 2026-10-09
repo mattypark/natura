@@ -203,3 +203,16 @@
     font-size: 15px;
   }
 }
+
+/* Reduced motion: no scrub, so show the first chapter and the phone at rest. */
+@media (prefers-reduced-motion: reduce) {
+  .chapter + .chapter,
+  .laptop {
+    display: none;
+  }
+
+  .body,
+  .phone {
+    opacity: 1;
+  }
+}

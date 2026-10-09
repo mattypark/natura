@@ -18,3 +18,6 @@ npm-debug.log*
 
 # vercel
 .vercel
+
+# reference media kept local (third-party footage, never committed)
+nextsessions/ref/

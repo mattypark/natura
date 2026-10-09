@@ -193,3 +193,9 @@
     display: none;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter + .chapter {
+    display: none;
+  }
+}

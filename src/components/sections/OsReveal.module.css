@@ -152,3 +152,32 @@
     text-align: center;
   }
 }
+
+/* Reduced motion: one still frame, wordmark above, sentence below. */
+@media (prefers-reduced-motion: reduce) {
+  .folder,
+  .pair {
+    display: none;
+  }
+
+  .wordmark {
+    align-content: start;
+    padding-top: 18vh;
+    visibility: visible;
+  }
+
+  .icon,
+  .kinetic > span {
+    opacity: 1;
+  }
+
+  .iconSlot {
+    top: 44%;
+  }
+
+  .kinetic {
+    top: auto;
+    bottom: 10vh;
+    translate: -50% 0;
+  }
+}

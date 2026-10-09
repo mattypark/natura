@@ -61,7 +61,7 @@ export function SensorStory() {
         }
       });
     } else {
-      gsap.set(chapters, { autoAlpha: 1 });
+      gsap.set(chapters[0], { autoAlpha: 1 });
     }
 
     // Leader lines follow the ring every frame while the section is on screen.
