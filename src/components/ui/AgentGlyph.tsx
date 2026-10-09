@@ -146,7 +146,7 @@ export function AgentGlyph({ id, size = 56, label, className }: AgentGlyphProps)
   return (
     <span
       className={`${styles.tile} ${className ?? ""}`}
-      style={{ background: glyph.tile, width: size, height: size }}
+      style={{ background: glyph.tile, width: size, height: typeof size === "number" ? size : undefined }}
       role={label ? "img" : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}

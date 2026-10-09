@@ -1,0 +1,125 @@
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: clamp(32px, 6vw, 120px);
+  padding-block: clamp(64px, 10svh, 142px);
+}
+
+.head {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+}
+
+.title {
+  max-width: 8ch;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--fs-faq);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.032em;
+}
+
+.sub {
+  max-width: 22em;
+  font-size: var(--fs-small);
+  font-weight: 300;
+  color: var(--muted);
+}
+
+.list {
+  border-top: 1px solid var(--ink-10);
+}
+
+.item {
+  border-bottom: 1px solid var(--ink-10);
+}
+
+.question {
+  display: grid;
+  grid-template-columns: 44px 1fr 20px;
+  align-items: center;
+  width: 100%;
+  padding: 18px 0;
+  text-align: left;
+}
+
+.number {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--ink-55);
+}
+
+.qText {
+  font-size: clamp(15px, 1.1vw, 18px);
+  font-weight: 400;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.question:hover .qText {
+  color: var(--lagoon-deep);
+}
+
+.plus {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  justify-self: end;
+}
+
+.plus::before,
+.plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.2px;
+  background: var(--ink);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.plus::after {
+  transform: rotate(90deg);
+}
+
+.plusOpen::after {
+  transform: rotate(0deg);
+}
+
+.answer {
+  overflow: hidden;
+}
+
+.answer p {
+  max-width: 36em;
+  padding: 0 20px 22px 44px;
+  font-size: clamp(14px, 1.04vw, 16px);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ink-70);
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.more {
+  font-size: var(--fs-small);
+  font-weight: 300;
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-10);
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+}

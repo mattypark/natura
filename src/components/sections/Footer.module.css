@@ -1,0 +1,125 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  background:
+    radial-gradient(60% 80% at 15% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+    linear-gradient(180deg, #45bdd6, var(--lagoon) 40%, #22a3c0);
+  color: var(--white);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 6vw, 120px);
+  padding-block: clamp(64px, 12vh, 140px) 32px;
+}
+
+.brand {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.wordmark {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(24px, 2vw, 34px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  max-width: 18em;
+  font-size: var(--fs-small);
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.community {
+  display: grid;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.colTitle {
+  margin-bottom: 14px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.community .colTitle {
+  margin-bottom: 0;
+}
+
+.inline {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.note {
+  max-width: 22em;
+  font-size: 12px;
+  font-weight: 300;
+  opacity: 0.75;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.links {
+  display: grid;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.links a,
+.inline a,
+.base a {
+  opacity: 0.92;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.links a:hover,
+.inline a:hover,
+.base a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.base {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+  gap: 8px 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 12px;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.notice {
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .notice {
+    margin-left: 0;
+  }
+}

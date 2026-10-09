@@ -1,0 +1,64 @@
+.section {
+  position: relative;
+  height: 340vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  inset: 0;
+}
+
+.tile {
+  position: absolute;
+  width: clamp(34px, 3.4vw, 54px);
+  translate: -50% -50%;
+  will-change: transform, opacity, filter;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  width: clamp(96px, 8.4vw, 140px);
+  translate: -50% -50%;
+}
+
+.copy {
+  position: absolute;
+  left: calc((100vw - var(--frame)) / 2);
+  bottom: clamp(32px, 8vh, 96px);
+  display: grid;
+  gap: 18px;
+  max-width: 605px;
+}
+
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(28px, 2.6vw, 46px);
+  font-weight: 300;
+  line-height: 1.03;
+  letter-spacing: -0.032em;
+}
+
+.body {
+  max-width: 34em;
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink-70);
+}
+
+@media (max-width: 767px) {
+  .copy {
+    left: var(--gutter);
+    right: var(--gutter);
+  }
+}

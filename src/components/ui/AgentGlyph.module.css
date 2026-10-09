@@ -3,6 +3,7 @@
   display: inline-grid;
   flex: none;
   place-items: center;
+  aspect-ratio: 1;
   border-radius: var(--radius-icon);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.5),

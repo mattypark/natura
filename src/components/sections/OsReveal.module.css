@@ -1,0 +1,154 @@
+.section {
+  position: relative;
+  height: 560vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ---------- Beat 1: folder ---------- */
+
+.folder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  width: clamp(130px, 13vw, 210px);
+  aspect-ratio: 1;
+  padding: 11%;
+  border-radius: 26%;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8), var(--shadow-float);
+  backdrop-filter: blur(20px) saturate(1.4);
+  translate: -50% -50%;
+  opacity: 0;
+}
+
+.mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  padding: 10%;
+  border-radius: 22%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Beat 2: wordmark ---------- */
+
+.wordmark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  padding-inline: calc((100vw - var(--frame)) / 2);
+  visibility: hidden;
+}
+
+.wordType {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding-block: 0.06em 0.12em;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(76px, 13.5vw, 250px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--ink-80);
+}
+
+.wordType > span {
+  display: inline-block;
+}
+
+.wordBody {
+  max-width: 300px;
+  margin-top: 1.2vw;
+}
+
+.iconSlot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(88px, 8.2vw, 136px);
+  translate: -50% -60%;
+  pointer-events: none;
+}
+
+.icon {
+  width: 100%;
+  opacity: 0;
+}
+
+/* ---------- Beat 3: pair ---------- */
+
+.pair {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: calc((100vw - var(--frame)) / 2);
+  visibility: hidden;
+}
+
+.pairHead {
+  display: grid;
+  gap: 16px;
+}
+
+.pairTitle {
+  display: grid;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(26px, 2.2vw, 40px);
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.pairBody {
+  max-width: 230px;
+}
+
+/* ---------- Beat 4: kinetic sentence ---------- */
+
+.kinetic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(15em, 84vw);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(32px, 3.9vw, 72px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-wrap: balance;
+  translate: -50% -50%;
+}
+
+.kinetic > span {
+  display: inline-block;
+  opacity: 0;
+  white-space: pre;
+}
+
+@media (max-width: 767px) {
+  .pair {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: calc(var(--nav-h) + 16px) var(--gutter) 48px;
+  }
+
+  .wordBody {
+    margin-inline: auto;
+    text-align: center;
+  }
+}
