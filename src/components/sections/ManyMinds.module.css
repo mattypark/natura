@@ -1,0 +1,47 @@
+.section {
+  position: relative;
+  height: 240vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  align-items: center;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.type {
+  display: grid;
+  padding-inline: calc((100vw - var(--frame)) / 2.6);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--fs-display);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+.line {
+  display: block;
+  will-change: transform, opacity, filter;
+}
+
+.one {
+  justify-self: end;
+  color: var(--lagoon);
+}
+
+.two {
+  justify-self: start;
+  color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .type {
+    padding-inline: var(--gutter);
+    font-size: clamp(48px, 15vw, 80px);
+    white-space: normal;
+  }
+}

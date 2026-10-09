@@ -1,0 +1,150 @@
+.section {
+  position: relative;
+  height: 320vh;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+}
+
+.chapter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  padding-inline: calc((100vw - var(--frame)) / 2);
+  pointer-events: none;
+}
+
+.titleCol {
+  display: grid;
+  gap: 18px;
+}
+
+.title {
+  max-width: 7.5em;
+}
+
+.body {
+  grid-column: 3;
+  max-width: 274px;
+  justify-self: end;
+}
+
+.teaser {
+  position: absolute;
+  right: calc((100vw - var(--frame)) / 2);
+  bottom: clamp(24px, 6vh, 64px);
+  z-index: 40;
+  display: block;
+  width: clamp(180px, 15vw, 240px);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 14px;
+  color: var(--white);
+  text-align: left;
+  box-shadow: var(--shadow-tile);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.teaser:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.teaserMedia {
+  position: absolute;
+  inset: 0;
+}
+
+.teaserTitle {
+  position: absolute;
+  left: 12px;
+  bottom: 22px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.teaserPlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+}
+
+.teaserLabel {
+  position: absolute;
+  left: 12px;
+  bottom: 8px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.dialog {
+  width: min(1100px, 92vw);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-film);
+  background: var(--night);
+  color: var(--white);
+}
+
+.dialog::backdrop {
+  background: rgba(20, 18, 16, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.dialogFrame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.dialogNote {
+  position: absolute;
+  left: 24px;
+  bottom: 20px;
+  font-size: var(--fs-small);
+  opacity: 0.8;
+}
+
+.dialogClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: var(--fs-ui);
+}
+
+@media (max-width: 767px) {
+  .chapter {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+    padding: calc(var(--nav-h) + 24px) var(--gutter) 120px;
+  }
+
+  .body {
+    grid-column: 1;
+    align-self: end;
+    justify-self: start;
+  }
+
+  .teaser {
+    display: none;
+  }
+}

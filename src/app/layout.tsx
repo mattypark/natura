@@ -15,7 +15,6 @@ const figtree = Figtree({
 // Variable optical size so display headlines get the fine, high-contrast cut.
 const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["200", "300", "400"],
   style: ["normal", "italic"],
   axes: ["opsz"],
   variable: "--font-serif",

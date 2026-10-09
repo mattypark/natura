@@ -104,6 +104,12 @@ export function RingStage() {
       canvas.style.opacity = String(Math.min(1, current.opacity));
 
       spinAngle += current.spin * dt;
+      if (current.spin < 0.01) {
+        // Once a section stops the spin, ease back to the nearest full turn so
+        // its authored pose reads exactly as keyed.
+        const rest = Math.round(spinAngle / (Math.PI * 2)) * Math.PI * 2;
+        spinAngle += (rest - spinAngle) * 0.08;
+      }
       const visibleWidth = visibleHeight * camera.aspect;
       const scale = (current.size * visibleHeight) / 2;
       rig.group.position.set(current.x * visibleWidth, -current.y * visibleHeight, 0);
