@@ -3,14 +3,15 @@
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { agents, orbitChapters } from "@/data/content";
+import { ringFit } from "@/lib/ringTrack";
 import { useScene } from "@/lib/useScene";
 
 import { AgentGlyph } from "../ui/AgentGlyph";
 import { Laptop, Phone } from "../ui/Devices";
 import styles from "./AgentOrbit.module.css";
 
-/** Ring hole radius as a share of viewport height, for a ring of a given size. */
-const holeRadius = (size: number) => `${(0.84 * size * 50).toFixed(2)}vh`;
+/** On-screen radius of the ring's hole, in px, for a ring of a given size. */
+const holeRadius = (size: number) => `${(0.84 * size * ringFit() * window.innerHeight * 0.5).toFixed(1)}px`;
 const ENTRY_SIZE = 0.9;
 const EXIT_SIZE = 5;
 /** Degrees the whole orbit turns across the section. */
@@ -56,11 +57,11 @@ export function AgentOrbit() {
       return;
     }
 
-    const tl = scrub();
+    const tl = scrub({ invalidateOnRefresh: true });
     tl.fromTo(
       stage,
-      { clipPath: `circle(${holeRadius(ENTRY_SIZE)} at 50% 50%)` },
-      { clipPath: `circle(${holeRadius(EXIT_SIZE)} at 50% 50%)`, ease: "power1.inOut", duration: 0.1 },
+      { clipPath: () => `circle(${holeRadius(ENTRY_SIZE)} at 50% 50%)` },
+      { clipPath: () => `circle(${holeRadius(EXIT_SIZE)} at 50% 50%)`, ease: "power1.inOut", duration: 0.1 },
       0,
     )
       .fromTo(tiles, { scale: 0.4, opacity: 0, filter: "blur(10px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", stagger: 0.006, duration: 0.08 }, 0.02)
@@ -70,11 +71,11 @@ export function AgentOrbit() {
       // Chapter one: pick a voice.
       .fromTo(titles[0].children, { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", stagger: 0.02, duration: 0.07 }, 0.12)
       .fromTo(bodies[0], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.07 }, 0.15)
-      .to(titles[0].children, { opacity: 0, y: -20, filter: "blur(6px)", stagger: 0.015, duration: 0.05 }, 0.45)
-      .to(bodies[0], { opacity: 0, y: -16, duration: 0.05 }, 0.45)
+      .to(titles[0].children, { opacity: 0, y: -20, filter: "blur(6px)", stagger: 0.015, duration: 0.05 }, 0.42)
+      .to(bodies[0], { opacity: 0, y: -16, duration: 0.05 }, 0.42)
 
       // Chapter two: they work your devices.
-      .fromTo(titles[1].children, { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", stagger: 0.02, duration: 0.07 }, 0.52)
+      .fromTo(titles[1].children, { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", stagger: 0.02, duration: 0.07 }, 0.54)
       .fromTo(bodies[1], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.07 }, 0.55)
       .fromTo(laptop, { opacity: 0, scale: 0.7, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.08, ease: "power2.out" }, 0.5)
       .to(laptop, { opacity: 0, scale: 0.85, y: -20, duration: 0.05 }, 0.74)

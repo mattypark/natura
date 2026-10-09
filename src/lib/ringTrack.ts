@@ -114,6 +114,15 @@ export function sampleRingTrack(scrollY: number, out: RingPose): RingPose {
   return out;
 }
 
+/**
+ * Ring sizes are authored as a share of viewport height for landscape
+ * screens. On portrait screens that would overflow the width, so every size
+ * is scaled down by this factor (1 on desktop, about 0.42 on a phone).
+ */
+export function ringFit(width = window.innerWidth, height = window.innerHeight): number {
+  return Math.min(1, width / height / 1.1);
+}
+
 /** Live screen positions of the sensor windows, written by the ring stage. */
 export type SensorPoint = { x: number; y: number; facing: boolean };
 
