@@ -1,0 +1,44 @@
+.roll {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  line-height: 1.25;
+  vertical-align: top;
+}
+
+.row,
+.rowClone {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.rowClone {
+  position: absolute;
+  inset: 0;
+}
+
+.letter {
+  display: inline-block;
+  transition: transform 520ms var(--ease-out);
+  transition-delay: calc(var(--i) * 14ms);
+}
+
+.rowClone .letter {
+  transform: translateY(105%);
+}
+
+:global([data-roll]:hover) .row .letter,
+:global([data-roll]:focus-visible) .row .letter {
+  transform: translateY(-105%);
+}
+
+:global([data-roll]:hover) .rowClone .letter,
+:global([data-roll]:focus-visible) .rowClone .letter {
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .rowClone {
+    display: none;
+  }
+}
