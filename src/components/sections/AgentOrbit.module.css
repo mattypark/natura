@@ -175,6 +175,11 @@
   display: block;
 }
 
+/* Later chapters start hidden in CSS; a staggered fromTo only pre-renders its first target. */
+.chapter + .chapter .title > span {
+  opacity: 0;
+}
+
 .body {
   width: min(236px, 17vw);
   font-size: clamp(15px, 1.39vw, 22px);

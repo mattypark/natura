@@ -21,3 +21,6 @@ npm-debug.log*
 
 # reference media kept local (third-party footage, never committed)
 nextsessions/ref/
+
+# screenshots and boards (boards worth keeping go to docs/boards/)
+/build/

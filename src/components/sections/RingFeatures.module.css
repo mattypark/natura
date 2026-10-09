@@ -19,6 +19,10 @@
   pointer-events: none;
 }
 
+.chapter + .chapter [data-line] {
+  opacity: 0;
+}
+
 .titleCol {
   display: grid;
   gap: 18px;
